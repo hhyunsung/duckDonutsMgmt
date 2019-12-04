@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SplashController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ImageView fitHeight="600.0" fitWidth="900.0" layoutY="-2.0">
+               <image>
+                  <Image url="@dd.jfif" />
+               </image>
+            </ImageView>
+            <Button layoutX="402.0" layoutY="550.0" mnemonicParsing="false" onAction="#enter" onMouseExited="#enter" prefHeight="30.0" prefWidth="97.0" text="Enter" textAlignment="CENTER" />
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
