@@ -88,13 +88,14 @@ public class Employee {
     //prep    
     public String typeFrosting; //from selection
     
-    public todaysDate() {
+    public void todaysDate() {
     } //get
     
-    public goodUntil() {
+    public void goodUntil() {
     } //todaysDate + 4
     
-    public todaysDay = ; // get
+    public void todaysDay() {
+    }
     
     public void labelPrint() {
       System.out.println(typeFrosting);
@@ -108,31 +109,30 @@ public class Employee {
       typeFrosting = ;
       todaysDate = ;
       
-      if (typeFrosting == "Vanilla") or (typeFrosting == "Chocolate") or (typeFrosting == "Glaze") {
+      if (typeFrosting == "Vanilla" || typeFrosting == "Chocolate" || typeFrosting == "Glaze") {
         System.out.println();
         labelPrint();
       }
-      
       else if (typeFrosting == "Peanut Butter") {
         System.out.println();
         labelPrint();
       }
-      
       else if (typeFrosting == "Lemon") {
         System.out.println();
         labelPrint();
       }
-      
       else if (typeFrosting == "Maple") {
         System.out.println();
         labelPrint();
       }
-      
-      else if (typeFrosting == "Blueberry") or (typeFrosting == "Strawberry") {
+      else if (typeFrosting == "Blueberry") {
         System.out.println();
         labelPrint();
       }
-      
+      else if (typeFrosting == "Strawberry") {
+        System.out.println();
+        labelPrint();
+      }
       else {
         System.out.println("Error, please reselect the frosting.");
       }
@@ -140,14 +140,19 @@ public class Employee {
     
     //dough
     public String size;
+    public float dryMix;
+    public float waterAmt;
     
     public void smallGuide() {
+      dryMix = ;
+      waterAmt = ;
     }
     
     public void mediumGuide() {
     }
     
     public void largeGuide() {
+      
     }
     
     public void doughGuide() {
@@ -186,7 +191,7 @@ public class Employee {
     }
     
     //coffee
-    public currentTime() {
+    public void currentTime() {
     } //get
     
     public void changeTime() {
