@@ -82,4 +82,117 @@ public class Employee {
         this.removeTask(task);
         employee.addTask(task);
     }
+        
+    //general methods + variables needed for tasks
+    
+    //prep    
+    public String typeFrosting; //from selection
+    
+    public todaysDate() {
+    } //get
+    
+    public goodUntil() {
+    } //todaysDate + 4
+    
+    public todaysDay = ; // get
+    
+    public void labelPrint() {
+      System.out.println(typeFrosting);
+      System.out.println(todaysDate);
+      System.out.println(goodUntil + "                " + name);
+      System.out.println("Made on: " + todaysDay);
+      System.out.println("M T W R F S S");
+    }
+    
+    public void prepGuide() {
+      typeFrosting = ;
+      todaysDate = ;
+      
+      if (typeFrosting == "Vanilla") or (typeFrosting == "Chocolate") or (typeFrosting == "Glaze") {
+        System.out.println();
+        labelPrint();
+      }
+      
+      else if (typeFrosting == "Peanut Butter") {
+        System.out.println();
+        labelPrint();
+      }
+      
+      else if (typeFrosting == "Lemon") {
+        System.out.println();
+        labelPrint();
+      }
+      
+      else if (typeFrosting == "Maple") {
+        System.out.println();
+        labelPrint();
+      }
+      
+      else if (typeFrosting == "Blueberry") or (typeFrosting == "Strawberry") {
+        System.out.println();
+        labelPrint();
+      }
+      
+      else {
+        System.out.println("Error, please reselect the frosting.");
+      }
+    }
+    
+    //dough
+    public String size;
+    
+    public void smallGuide() {
+    }
+    
+    public void mediumGuide() {
+    }
+    
+    public void largeGuide() {
+    }
+    
+    public void doughGuide() {
+      if (size == "Small") {
+        smallGuide();
+      }
+      
+      else if (size == "Medium") {
+        mediumGuide();
+      }
+      
+      else if (size == "Large") {
+        largeGuide();
+      }
+      
+      else {
+        System.out.println("Error, please reselect the dough size.");
+      }
+    }
+    
+    //paycheck approximation
+    public float hourlyWage; //needs input
+    public float taxPercentage; //need to scrape
+    public float taxDeduction;
+    public float paycheckGross;
+    public float paycheckNet;
+    public float hoursWorkedWeek; //needs input
+    
+    public void paycheckApprox() {
+      paycheckGross = hourlyWage * hoursWorked;
+      taxDeduction = paycheckGross * taxPercentage;
+      paycheckNet = paycheckGross - taxDeduction;
+      System.out.println("Gross paycheck (before taxes): $" + paycheckGross);
+      System.out.println("Net paycheck (after taxes): $" + paycheckNet);
+      System.out.println("The current income tax percentage is " + taxPercentage);
+    }
+    
+    //coffee
+    public currentTime() {
+    } //get
+    
+    public void changeTime() {
+    } //get, currentTime + 3
+    
+    public void coffeeGuide() {
+      //guide
+    }
 }
