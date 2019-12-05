@@ -4,6 +4,7 @@ import java.util.Date;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Scanner;
 
 public class Employee {
   
@@ -183,25 +184,7 @@ public class Employee {
     public String size;
     public double dryMix;
     public double waterAmt;
-    public int waterTemp;
-    public int roomTemp;
-    public int mixTemp;
-    
-    public void calcTemp() {
-      //here, obtain input for roomTemp and mixTemp
-      if (roomTemp < 0) {
-        if (mixTemp < 0) {
-          waterTemp = 230 - roomTemp - mixTemp - 3;
-        }
-        else {
-          System.out.println("Error, please enter a whole number with no decimal.");
-        }
-      }
-      else {
-        System.out.println("Error, please enter a whole number with no decimal.");
-    }
-    }
-    
+
     public void smallGuide() {
       dryMix = 1.65;
       waterAmt = 3.0;
@@ -279,8 +262,7 @@ public class Employee {
       System.out.println("2. Place the coffee drip in the grinder, select the desired amount of coffee, and press Grind");
       System.out.println("3. Once the grinder is finished, place the drip into the brewer");
       System.out.println("4. Place the empty coffee holder under the drip and begin brewing");
-      System.out.println("5. Once finished, place in front of store");
-      System.out.println(" ");
+      System.out.println("5. Once finished, place in front of store\n");
       System.out.println("The current time is " + currentTime + ". Remember that coffee must be changed every 3 hours, so it will need to be changed at " + changeTime);
     }
 }
