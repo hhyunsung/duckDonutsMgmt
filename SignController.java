@@ -8,8 +8,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.*;
+import javafx.scene.control.PasswordField;
 public class SignController {
-    @FXML private Text actiontarget;
+    @FXML private PasswordField quizPIN;
     
-    
+    @FXML protected void enter(ActionEvent event) throws IOException
+    {
+        Parent quiz = FXMLLoader.load(getClass().getResource("quiz.fxml"));
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.getScene().setRoot(quiz);
+    }
+     
 }

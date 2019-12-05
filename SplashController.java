@@ -17,9 +17,7 @@ public class SplashController {
     @FXML protected void enter(ActionEvent event) throws IOException
     {
         Parent sign = FXMLLoader.load(getClass().getResource("sign.fxml"));
-        Scene root = new Scene(sign, 900, 600);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(root);
-        window.show();
+        window.getScene().setRoot(sign);
     }
 }
