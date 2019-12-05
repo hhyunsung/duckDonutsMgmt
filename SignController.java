@@ -12,11 +12,17 @@ import javafx.scene.control.PasswordField;
 public class SignController {
     @FXML private PasswordField quizPIN;
     
-    @FXML protected void enter(ActionEvent event) throws IOException
+    @FXML protected void enterQuiz(ActionEvent event) throws IOException
     {
         Parent quiz = FXMLLoader.load(getClass().getResource("quiz.fxml"));
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.getScene().setRoot(quiz);
     }
-     
+     @FXML protected void enterEmployee(ActionEvent event) throws IOException
+    {
+        Parent emp = FXMLLoader.load(getClass().getResource("employeeview.fxml"));
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.getScene().setRoot(emp);
+        
+    }
 }

@@ -66,23 +66,23 @@ public class QuizController {
     private static double quizProgress;
     private static int numCorrect;
 
-    String q1 = "qwe"; //question to be answered
-    String q2 = "rg";
-    String q3 = "ndt";
-    String q4 = "cyj";
-    String q5 = "jyx";
-    String q6 = "jygc";
-    String q7 = "ku";
-    String q8 = "gu;";
+    String q1 = "How much dry mix do you need to make a large batch of dough?"; //question to be answered
+    String q2 = "How often does coffee need to be changed?";
+    String q3 = "How long is frosting good?";
+    String q4 = "How much blueberry fruit do you need to prepare blueberry frosting?";
+    String q5 = "How much water do you need to make a medium batch of dough?";
+    String q6 = "What kind of frosting does NOT need extra ingredients?";
+    String q7 = "When preparing dough, how many times should you zero the scale?";
+    String q8 = "How long can dough be out?;";
 
-    String[] a1 = {"test","wrong","wrong","wrong"}; //possible answer to each question.[0] is the correct one, shuffled when passed into QuizQuestion
-    String[] a2 = {"ghESr","","",""};
-    String[] a3 = {"","hzrh","",""};
-    String[] a4 = {"","","",""};
-    String[] a5 = {"","","",""};
-    String[] a6 = {"","","",""};
-    String[] a7 = {"","","",""};
-    String[] a8 = {"","","",""};
+    String[] a1 = {"8.0 pounds","wrong","wrong","wrong"}; //possible answer to each question.[0] is the correct one, shuffled when passed into QuizQuestion
+    String[] a2 = {"Every 3 hours","Once a day","Twice a day","Every hour"};
+    String[] a3 = {"5 days including the day it was made","One day","Only the day it was made","Two weeks"};
+    String[] a4 = {"1 cup","3 cups","0.5 cups","2 cups"};
+    String[] a5 = {"2.75 pounds","1 pound","3 pounds","2 pounds"};
+    String[] a6 = {"Chocolate","Blueberry","Lemon","Strawberry"};
+    String[] a7 = {"Twice","Once","Once per day","At closing"};
+    String[] a8 = {"30 minutes per batch","An hour","15 minutes per batch","Not at all"};
 
     QuizQuestion block1 = new QuizQuestion(q1, a1, a1[0]);
     QuizQuestion block2 = new QuizQuestion(q2, a2, a2[0]);
@@ -155,8 +155,6 @@ public class QuizController {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Wrong Answer");
         alert.setHeaderText("That's not right. Try again!");
-        //alert.setContentText("Careful with the next step!");
-
         alert.showAndWait();
     }
     
