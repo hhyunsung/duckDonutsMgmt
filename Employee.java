@@ -7,96 +7,130 @@ import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Employee {
-  
-  //basics
-    
     private String name;
-    private int phone;
+    private String phone;
     private int pin;
     private int age;
     private String email;
-    private ArrayList<String> tasks; // to be sorted by priority
-    
+    public ArrayList<Task> tasks; // to be sorted by priority 0 - highest
+    private static ArrayList<Integer> pins = new ArrayList();
+    public static ArrayList<Employee> emps = new ArrayList();
     public Employee()
     {
-        this("",0,0,0,"");
+        this("","",0,0,"");
     }
-    public Employee(String name, int phone, int pin, int age, String email)
+
+    public Employee(String name, String phone, int pin, int age, String email)
     {
         this.name = name;
         this.phone = phone;
         this.pin = pin;
         this.age = age;
         this.email = email;
-        
+        pins.add(this.pin);
         tasks = new ArrayList();
+        emps.add(0,this);
     }
-    
+
     public void setName(String name)
     {
         this.name = name;
     }
+
     public String getName()
     {
         return this.name;
     }
-    
-    public void setPhone(int phone)
+
+    public void setPhone(String phone)
     {
         this.phone = phone;
     }
-    public int getPhone()
+
+    public String getPhone()
     {
         return this.phone;
     }
-    
+
     public void setPin(int pin)
     {
         this.pin = pin;
     }
+
     public int getPin()
     {
         return this.pin;
     }
-    
+
     public void setAge(int age)
     {
         this.age = age;
     }
+
     public int getAge()
     {
         return this.age;
     }
-    
+
     public void setEmail(String email)
     {
         this.email = email;
     }
+
     public String getEmail()
     {
         return this.email;
     }
-    
-    //task setting    
-    
-    public void addTask(String task)
+
+
+    public String shortView()
+
     {
-        tasks.add(task);
+        return (this.name+" "+this.email);
     }
-    public void removeTask(String task)
+
+    public void addTask(Task task)
+    {
+        for(int i = 0;i<tasks.size();i++)
+        {
+            if(task.getPriority() >= tasks.get(i).getPriority())
+            {
+                tasks.add(i, task);
+            }
+            else if(i == tasks.size() - 1)
+            {
+                tasks.add(task);
+            }
+        }
+    }
+
+    public void removeTask(Task task)
     {
         tasks.remove(task);
     }
-    public void switchTask(String task, Employee employee)
+
+    public void switchTask(Task task, Employee employee)
     {
         this.removeTask(task);
         employee.addTask(task);
     }
-    
+
+
+    public String getTasks()
+    {
+        String print = "";
+        for( Task t : tasks)
+        {
+            print += (t.getDescription()+" \n");
+        }
+        return print;
+    }
+
     //general methods + variables needed for tasks
-    
+
     //prep    
     public String typeFrosting; //from selection
+
     
     public Date todaysDate;
     
@@ -147,8 +181,9 @@ public class Employee {
       System.out.println(goodUntil + "                " + name);
       System.out.println("Made on: " + todaysDay);
       System.out.println("S M T W R F S");
+
     }
-    
+
     public void prepGuide() {
       
       if (typeFrosting == "Vanilla" || typeFrosting == "Chocolate" || typeFrosting == "Glaze") {
@@ -180,22 +215,29 @@ public class Employee {
       }
     }
     
+
     //dough
     public String size;
     public double dryMix;
     public double waterAmt;
 
     public void smallGuide() {
+
       dryMix = 1.65;
       waterAmt = 3.0;
+
     }
-    
+
     public void mediumGuide() {
+
+
       dryMix = 2.75;
       waterAmt = 5.0;
+
     }
-    
+
     public void largeGuide() {
+
       dryMix = 4.4;
       waterAmt = 8.0;
     }
@@ -234,16 +276,16 @@ public class Employee {
     public double paycheckGross;
     public double paycheckNet;
     public double hoursWorked; //needs input
-    
+
     public void paycheckApprox() {
-      paycheckGross = hourlyWage * hoursWorked;
-      taxDeduction = paycheckGross * taxPercentage;
-      paycheckNet = paycheckGross - taxDeduction;
-      System.out.println("Gross paycheck (before taxes): $" + paycheckGross);
-      System.out.println("Net paycheck (after taxes): $" + paycheckNet);
-      System.out.println("The current income tax percentage is " + taxPercentage);
+        paycheckGross = hourlyWage * hoursWorked;
+        taxDeduction = paycheckGross * taxPercentage;
+        paycheckNet = paycheckGross - taxDeduction;
+        System.out.println("Gross paycheck (before taxes): $" + paycheckGross);
+        System.out.println("Net paycheck (after taxes): $" + paycheckNet);
+        System.out.println("The current income tax percentage is " + taxPercentage);
     }
-    
+
     //coffee
     public LocalTime currentTime;
     
