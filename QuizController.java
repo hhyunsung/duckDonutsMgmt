@@ -75,7 +75,7 @@ public class QuizController {
     String q7 = "When preparing dough, how many times should you zero the scale?";
     String q8 = "How long can dough be out?;";
 
-    String[] a1 = {"8.0 pounds","wrong","wrong","wrong"}; //possible answer to each question.[0] is the correct one, shuffled when passed into QuizQuestion
+    String[] a1 = {"8.0 pounds","One bag","6.5 pounds","5 pounds"}; //possible answer to each question.[0] is the correct one, shuffled when passed into QuizQuestion
     String[] a2 = {"Every 3 hours","Once a day","Twice a day","Every hour"};
     String[] a3 = {"5 days including the day it was made","One day","Only the day it was made","Two weeks"};
     String[] a4 = {"1 cup","3 cups","0.5 cups","2 cups"};

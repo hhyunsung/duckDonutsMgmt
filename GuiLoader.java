@@ -15,6 +15,7 @@ public class GuiLoader extends Application {
         
         stage.setTitle("Duck Donuts Management");
         stage.setScene(new Scene(splash, 900, 600));
+        stage.setResizable(false);
         stage.show();
     }
 }

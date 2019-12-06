@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.sql.Time;
@@ -12,6 +12,7 @@ public class Employee {
     private int pin;
     private int age;
     private String email;
+    private String id;
     public ArrayList<Task> tasks; // to be sorted by priority 0 - highest
     private static ArrayList<Integer> pins = new ArrayList();
     public static ArrayList<Employee> emps = new ArrayList();
@@ -29,7 +30,9 @@ public class Employee {
         this.email = email;
         pins.add(this.pin);
         tasks = new ArrayList();
+        id = Integer.toString(((int)Math.random()*100)+1000);
         emps.add(0,this);
+        
     }
 
     public void setName(String name)
@@ -91,6 +94,7 @@ public class Employee {
 
     public void addTask(Task task)
     {
+        /**
         for(int i = 0;i<tasks.size();i++)
         {
             if(task.getPriority() >= tasks.get(i).getPriority())
@@ -101,7 +105,12 @@ public class Employee {
             {
                 tasks.add(task);
             }
+            
+           
         }
+        */
+        tasks.add(task);
+        Collections.sort(tasks);
     }
 
     public void removeTask(Task task)
@@ -114,16 +123,31 @@ public class Employee {
         this.removeTask(task);
         employee.addTask(task);
     }
-
+    public String getId()
+    {
+        return this.id;
+    }
+    public static boolean exists(String id)
+    {
+        for(Employee e : emps)
+        {
+            if(id == e.getId())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public String getTasks()
     {
-        String print = "";
+        ArrayList<String> taskDescriptions = new ArrayList();
         for( Task t : tasks)
         {
-            print += (t.getDescription()+" \n");
+            taskDescriptions.add(t.getDescription());
         }
-        return print;
+        return String.join(", ", taskDescriptions);
+        
     }
 
     //general methods + variables needed for tasks

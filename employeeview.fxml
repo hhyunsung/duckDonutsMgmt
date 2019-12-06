@@ -27,24 +27,28 @@
       </MenuBar>
       <AnchorPane prefHeight="600.0" prefWidth="900.0">
          <children>
-            <ScrollPane prefHeight="575.0" prefWidth="424.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane fx:id="empViewScrollPane" prefHeight="575.0" prefWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="0.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="575.0" prefWidth="450.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="575.0" prefWidth="434.0">
                      <children>
-                        <VBox fx:id="empShortView" layoutX="125.0" layoutY="52.0" prefHeight="563.0" prefWidth="450.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <padding>
-                              <Insets left="10.0" right="150.0" top="10.0" />
-                           </padding>
-                        </VBox>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="569.0" prefWidth="432.0">
+                           <children>
+                              <VBox fx:id="empShortView" prefHeight="575.0" prefWidth="441.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <padding>
+                                    <Insets left="10.0" right="150.0" top="10.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
               </content>
             </ScrollPane>
-            <ScrollPane layoutX="450.0" prefHeight="400.0" prefWidth="450.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane layoutX="450.0" prefHeight="402.0" prefWidth="450.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="450.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="445.0">
                      <children>
-                        <VBox fx:id="taskView" layoutX="132.0" layoutY="78.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox fx:id="taskView" prefHeight="400.0" prefWidth="445.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="150.0" top="10.0" />
                            </padding>
@@ -53,9 +57,13 @@
                   </AnchorPane>
               </content>
             </ScrollPane>
-            <Button layoutX="851.0" layoutY="536.0" mnemonicParsing="false" onAction="#exit" text="Exit" />
-            <Button layoutX="463.0" layoutY="429.0" mnemonicParsing="false" onAction="#addEmp" text="Add Created Employee" />
-            <Button layoutX="799.0" layoutY="429.0" mnemonicParsing="false" onAction="#taskWindow" text="Add Task " />
+            <AnchorPane layoutX="450.0" layoutY="425.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="175.0" prefWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#addEmp" prefHeight="95.0" prefWidth="225.0" text="Refresh Employees" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button layoutX="300.0" mnemonicParsing="false" onAction="#taskWindow" prefHeight="95.0" prefWidth="225.0" text="Add Task " AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button layoutX="-4.0" layoutY="120.0" mnemonicParsing="false" onAction="#exit" prefHeight="80.0" prefWidth="450.0" text="Exit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
          </children>
          <VBox.margin>
             <Insets />
