@@ -5,8 +5,8 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
-public class Employee {
 
+public class Employee {
     private String name;
     private String phone;
     private int pin;
@@ -82,7 +82,9 @@ public class Employee {
         return this.email;
     }
 
+
     public String shortView()
+
     {
         return (this.name+" "+this.email);
     }
@@ -113,6 +115,7 @@ public class Employee {
         employee.addTask(task);
     }
 
+
     public String getTasks()
     {
         String print = "";
@@ -122,92 +125,96 @@ public class Employee {
         }
         return print;
     }
+
     //general methods + variables needed for tasks
 
     //prep    
     public String typeFrosting; //from selection
 
+    
     public Date todaysDate;
-
+    
     public void getDate() {
-        long millis = System.currentTimeMillis();
-        java.sql.Date date = new java.sql.Date(millis);
-        todaysDate = date;
+      long millis = System.currentTimeMillis();
+      java.sql.Date date = new java.sql.Date(millis);
+      todaysDate = date;
     }
-
+    
     public LocalDate goodUntil;
-
+    
     public void getGoodUntil() {
-        LocalDate goodUntil = LocalDate.now().plusDays(4);
+      LocalDate goodUntil = LocalDate.now().plusDays(4);
     } //todaysDate + 4
-
+    
     public String todaysDay;
-
+    
     public Calendar localCalendar;
-
+    
     public void getDay() {
-        int currentDayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
-        if (currentDayOfWeek == 1) {
-            todaysDay = "x";
-        }
-        else if (currentDayOfWeek == 2) {
-            todaysDay = "  x";
-        }
-        else if (currentDayOfWeek == 3) {
-            todaysDay = "    x";
-        }
-        else if (currentDayOfWeek == 4) {
-            todaysDay = "      x";
-        }
-        else if (currentDayOfWeek == 5) {
-            todaysDay = "        x";
-        }
-        else if (currentDayOfWeek == 6) {
-            todaysDay = "          x";
-        }
-        else if (currentDayOfWeek == 7) {
-            todaysDay = "            x";
-        }
+     int currentDayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
+     if (currentDayOfWeek == 1) {
+       todaysDay = "x";
+     }
+     else if (currentDayOfWeek == 2) {
+       todaysDay = "  x";
+     }
+     else if (currentDayOfWeek == 3) {
+       todaysDay = "    x";
+     }
+     else if (currentDayOfWeek == 4) {
+       todaysDay = "      x";
+     }
+     else if (currentDayOfWeek == 5) {
+       todaysDay = "        x";
+     }
+     else if (currentDayOfWeek == 6) {
+       todaysDay = "          x";
+     }
+     else if (currentDayOfWeek == 7) {
+       todaysDay = "            x";
+     }
     }
 
     public void labelPrint() {
-        System.out.println(typeFrosting);
-        System.out.println(todaysDate);
-        System.out.println(goodUntil + "                " + name);
-        System.out.println("Made on: " + todaysDay);
-        System.out.println("S M T W R F S");
+      System.out.println(typeFrosting);
+      System.out.println(todaysDate);
+      System.out.println(goodUntil + "                " + name);
+      System.out.println("Made on: " + todaysDay);
+      System.out.println("S M T W R F S");
+
     }
 
     public void prepGuide() {
-
-        if (typeFrosting == "Vanilla" || typeFrosting == "Chocolate" || typeFrosting == "Glaze") {
-            System.out.println();
-            labelPrint();
-        }
-        else if (typeFrosting == "Peanut Butter") {
-            System.out.println();
-            labelPrint();
-        }
-        else if (typeFrosting == "Lemon") {
-            System.out.println();
-            labelPrint();
-        }
-        else if (typeFrosting == "Maple") {
-            System.out.println();
-            labelPrint();
-        }
-        else if (typeFrosting == "Blueberry") {
-            System.out.println();
-            labelPrint();
-        }
-        else if (typeFrosting == "Strawberry") {
-            System.out.println();
-            labelPrint();
-        }
-        else {
-            System.out.println("Error, please reselect the frosting.");
-        }
+      
+      if (typeFrosting == "Vanilla" || typeFrosting == "Chocolate" || typeFrosting == "Glaze") {
+        System.out.println();
+        labelPrint();
+      }
+      else if (typeFrosting == "Peanut Butter") {
+        System.out.println();
+        labelPrint();
+      }
+      else if (typeFrosting == "Lemon") {
+        System.out.println();
+        labelPrint();
+      }
+      else if (typeFrosting == "Maple") {
+        System.out.println();
+        labelPrint();
+      }
+      else if (typeFrosting == "Blueberry") {
+        System.out.println();
+        labelPrint();
+      }
+      else if (typeFrosting == "Strawberry") {
+        System.out.println();
+        labelPrint();
+      }
+      else {
+        System.out.println("Error, please reselect the frosting.");
+      }
     }
+    
 
     //dough
     public String size;
@@ -215,47 +222,53 @@ public class Employee {
     public double waterAmt;
 
     public void smallGuide() {
-        dryMix = 1.65;
-        waterAmt = 3.0;
+
+      dryMix = 1.65;
+      waterAmt = 3.0;
+
     }
 
     public void mediumGuide() {
-        dryMix = 2.75;
-        waterAmt = 5.0;
+
+
+      dryMix = 2.75;
+      waterAmt = 5.0;
+
     }
 
     public void largeGuide() {
-        dryMix = 4.4;
-        waterAmt = 8.0;
-    }
 
+      dryMix = 4.4;
+      waterAmt = 8.0;
+    }
+    
     public void doughGuideValues() {
-        if (size == "Small") {
-            smallGuide();
-        }
-        else if (size == "Medium") {
-            mediumGuide();
-        }
-        else if (size == "Large") {
-            largeGuide();
-        }
-        else {
-            System.out.println("Error, please reselect the dough size.");
-        }
+      if (size == "Small") {
+        smallGuide();
+      }
+      else if (size == "Medium") {
+        mediumGuide();
+      }
+      else if (size == "Large") {
+        largeGuide();
+      }
+      else {
+        System.out.println("Error, please reselect the dough size.");
+      }
     }
-
+    
     public void doughGuide() {
-        System.out.println("1. Spray bowl, mixing paddle, and spatula with cooking spray");
-        System.out.println("2. Place empty water pitcher on scale and press Tare to zero");
-        System.out.println("3. Measure out" + waterAmt + " pounds of water and pour into the bowl");
-        System.out.println("4. Place empty dry mix container on scale and press Tare to zero");
-        System.out.println("5. Measure out" + dryMix + " pounds of dry mix and pour into the bowl");
-        System.out.println("6. Mix with paddle, then place bowl and paddle on the mixer");
-        System.out.println("7. Set mixer for 1 minute on speed one and mix");
-        System.out.println("8. When finished, set mixer for 2 minutes on speed two and mix");
-        System.out.println("9. Unlatch the bowl and paddle and scrape extra dough off of the paddle using the spatula");
+      System.out.println("1. Spray bowl, mixing paddle, and spatula with cooking spray");
+      System.out.println("2. Place empty water pitcher on scale and press Tare to zero");
+      System.out.println("3. Measure out" + waterAmt + " pounds of water and pour into the bowl");
+      System.out.println("4. Place empty dry mix container on scale and press Tare to zero");
+      System.out.println("5. Measure out" + dryMix + " pounds of dry mix and pour into the bowl");
+      System.out.println("6. Mix with paddle, then place bowl and paddle on the mixer");
+      System.out.println("7. Set mixer for 1 minute on speed one and mix");
+      System.out.println("8. When finished, set mixer for 2 minutes on speed two and mix");
+      System.out.println("9. Unlatch the bowl and paddle and scrape extra dough off of the paddle using the spatula");
     }
-
+    
     //paycheck approximation
     public double hourlyWage; //needs input
     public double taxPercentage; //need to scrape
@@ -275,23 +288,23 @@ public class Employee {
 
     //coffee
     public LocalTime currentTime;
-
+    
     public static void main(String[] args) {
-        LocalTime currentTime = LocalTime.now();
+      LocalTime currentTime = LocalTime.now();
     }
-
+    
     public LocalTime changeTime;
-
+    
     public void coffeeChangeTime() {
-        changeTime = currentTime.plusHours(3);
+      changeTime = currentTime.plusHours(3);
     }
-
+    
     public void coffeeGuide() {
-        System.out.println("1. Place large coffee filter in empty coffee drip");
-        System.out.println("2. Place the coffee drip in the grinder, select the desired amount of coffee, and press Grind");
-        System.out.println("3. Once the grinder is finished, place the drip into the brewer");
-        System.out.println("4. Place the empty coffee holder under the drip and begin brewing");
-        System.out.println("5. Once finished, place in front of store\n");
-        System.out.println("The current time is " + currentTime + ". Remember that coffee must be changed every 3 hours, so it will need to be changed at " + changeTime);
+      System.out.println("1. Place large coffee filter in empty coffee drip");
+      System.out.println("2. Place the coffee drip in the grinder, select the desired amount of coffee, and press Grind");
+      System.out.println("3. Once the grinder is finished, place the drip into the brewer");
+      System.out.println("4. Place the empty coffee holder under the drip and begin brewing");
+      System.out.println("5. Once finished, place in front of store\n");
+      System.out.println("The current time is " + currentTime + ". Remember that coffee must be changed every 3 hours, so it will need to be changed at " + changeTime);
     }
 }
