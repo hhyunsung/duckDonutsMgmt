@@ -1,10 +1,11 @@
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
+import java.io.*;
 
 public class Employee {
     private String name;
@@ -12,15 +13,20 @@ public class Employee {
     private int pin;
     private int age;
     private String email;
-    public ArrayList<Task> tasks; // to be sorted by priority 0 - highest
+    private String id;
+    private ArrayList<Task> tasks;
     private static ArrayList<Integer> pins = new ArrayList();
-    public static ArrayList<Employee> emps = new ArrayList();
+    private static ArrayList<Employee> emps = new ArrayList();
     public Employee()
     {
         this("","",0,0,"");
     }
 
-    public Employee(String name, String phone, int pin, int age, String email)
+    /**
+     * constructor
+     * adds itself to list once created to be kept track of
+     * 
+     */public Employee(String name, String phone, int pin, int age, String email)
     {
         this.name = name;
         this.phone = phone;
@@ -29,7 +35,7 @@ public class Employee {
         this.email = email;
         pins.add(this.pin);
         tasks = new ArrayList();
-        emps.add(0,this);
+        emps.add(this);
     }
 
     public void setName(String name)
@@ -82,229 +88,111 @@ public class Employee {
         return this.email;
     }
 
-
-    public String shortView()
-
-    {
-        return (this.name+" "+this.email);
-    }
-
     public void addTask(Task task)
     {
-        for(int i = 0;i<tasks.size();i++)
-        {
-            if(task.getPriority() >= tasks.get(i).getPriority())
-            {
-                tasks.add(i, task);
-            }
-            else if(i == tasks.size() - 1)
-            {
-                tasks.add(task);
-            }
-        }
+        tasks.add(task);
+        Collections.sort(tasks);
     }
 
-    public void removeTask(Task task)
+       public static ArrayList<Employee> getEmployees()
     {
-        tasks.remove(task);
+        return emps;
     }
 
-    public void switchTask(Task task, Employee employee)
+    public static ArrayList<Integer> getPinList()
     {
-        this.removeTask(task);
-        employee.addTask(task);
+        return pins;
     }
-
-
-    public String getTasks()
+    
+    public ArrayList<Task> getTasks()
     {
-        String print = "";
+        return tasks;
+    }
+    
+    /**
+     * joins task descriptiosn into one line to be displayed
+     * 
+     */public String writeTasks()
+    {
+        ArrayList<String> taskDescriptions = new ArrayList();
         for( Task t : tasks)
         {
-            print += (t.getDescription()+" \n");
+            taskDescriptions.add(t.getDescription());
         }
-        return print;
-    }
-
-    //general methods + variables needed for tasks
-
-    //prep    
-    public String typeFrosting; //from selection
-
-    
-    public Date todaysDate;
-    
-    public void getDate() {
-      long millis = System.currentTimeMillis();
-      java.sql.Date date = new java.sql.Date(millis);
-      todaysDate = date;
-    }
-    
-    public LocalDate goodUntil;
-    
-    public void getGoodUntil() {
-      LocalDate goodUntil = LocalDate.now().plusDays(4);
-    } //todaysDate + 4
-    
-    public String todaysDay;
-    
-    public Calendar localCalendar;
-    
-    public void getDay() {
-     int currentDayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
-     if (currentDayOfWeek == 1) {
-       todaysDay = "x";
-     }
-     else if (currentDayOfWeek == 2) {
-       todaysDay = "  x";
-     }
-     else if (currentDayOfWeek == 3) {
-       todaysDay = "    x";
-     }
-     else if (currentDayOfWeek == 4) {
-       todaysDay = "      x";
-     }
-     else if (currentDayOfWeek == 5) {
-       todaysDay = "        x";
-     }
-     else if (currentDayOfWeek == 6) {
-       todaysDay = "          x";
-     }
-     else if (currentDayOfWeek == 7) {
-       todaysDay = "            x";
-     }
-    }
-
-    public void labelPrint() {
-      System.out.println(typeFrosting);
-      System.out.println(todaysDate);
-      System.out.println(goodUntil + "                " + name);
-      System.out.println("Made on: " + todaysDay);
-      System.out.println("S M T W R F S");
+        return String.join(", ", taskDescriptions);
 
     }
 
-    public void prepGuide() {
-      
-      if (typeFrosting == "Vanilla" || typeFrosting == "Chocolate" || typeFrosting == "Glaze") {
-        System.out.println();
-        labelPrint();
-      }
-      else if (typeFrosting == "Peanut Butter") {
-        System.out.println();
-        labelPrint();
-      }
-      else if (typeFrosting == "Lemon") {
-        System.out.println();
-        labelPrint();
-      }
-      else if (typeFrosting == "Maple") {
-        System.out.println();
-        labelPrint();
-      }
-      else if (typeFrosting == "Blueberry") {
-        System.out.println();
-        labelPrint();
-      }
-      else if (typeFrosting == "Strawberry") {
-        System.out.println();
-        labelPrint();
-      }
-      else {
-        System.out.println("Error, please reselect the frosting.");
-      }
-    }
-    
+    /**
+     *  writes attributes from employee objects to be loaded when the program is ran again
+     * 
+     */public static void save()
+    {
+        try 
+        {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("employees.txt",false));
 
-    //dough
-    public String size;
-    public double dryMix;
-    public double waterAmt;
-
-    public void smallGuide() {
-
-      dryMix = 1.65;
-      waterAmt = 3.0;
-
+            for(Employee e : emps)
+            {
+                writer.write(e.name);
+                writer.write("-");
+                writer.write(e.phone);
+                writer.write("-");
+                writer.write(new Integer(e.pin).toString());
+                writer.write("-");
+                writer.write(new Integer(e.age).toString());
+                writer.write("-");
+                writer.write(e.email);
+                writer.write("-");
+                writer.newLine();
+            }
+            writer.close();
+        }
+        catch(IOException ex) 
+        {
+            System.out.println("Error writing to file '"+ "employees.txt" + "'");
+        }
     }
 
-    public void mediumGuide() {
-
-
-      dryMix = 2.75;
-      waterAmt = 5.0;
-
+    /**
+     * reads employees.txt file and creates employees from saved attributes
+     * 
+     */public static void load()
+    {
+        String line = null;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("employees.txt"));
+            String name = "";
+            String phone = "";
+            String pin = "";
+            String age = "";
+            String email = "";
+            String[] obj = new String[5];
+            
+            while((line = reader.readLine()) != null) 
+            {
+                 obj = line.split("-");
+                name = obj[0];
+                phone = obj[1];
+                pin = obj[2];
+                age = obj[3];
+                email = obj[4];
+          
+            
+                Employee temp = new Employee(name, phone, Integer.parseInt(pin), Integer.parseInt(age), email);
+            }   
+            if((line = reader.readLine()) == null)
+            {
+                return;
+            }
+            reader.close();         
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println("Unable to open file " + "employees.txt" + "");                
+        }
+        catch(IOException ex) {
+            System.out.println("Error reading file " + "employees.txt" + "");                  
+        }
     }
 
-    public void largeGuide() {
-
-      dryMix = 4.4;
-      waterAmt = 8.0;
-    }
-    
-    public void doughGuideValues() {
-      if (size == "Small") {
-        smallGuide();
-      }
-      else if (size == "Medium") {
-        mediumGuide();
-      }
-      else if (size == "Large") {
-        largeGuide();
-      }
-      else {
-        System.out.println("Error, please reselect the dough size.");
-      }
-    }
-    
-    public void doughGuide() {
-      System.out.println("1. Spray bowl, mixing paddle, and spatula with cooking spray");
-      System.out.println("2. Place empty water pitcher on scale and press Tare to zero");
-      System.out.println("3. Measure out" + waterAmt + " pounds of water and pour into the bowl");
-      System.out.println("4. Place empty dry mix container on scale and press Tare to zero");
-      System.out.println("5. Measure out" + dryMix + " pounds of dry mix and pour into the bowl");
-      System.out.println("6. Mix with paddle, then place bowl and paddle on the mixer");
-      System.out.println("7. Set mixer for 1 minute on speed one and mix");
-      System.out.println("8. When finished, set mixer for 2 minutes on speed two and mix");
-      System.out.println("9. Unlatch the bowl and paddle and scrape extra dough off of the paddle using the spatula");
-    }
-    
-    //paycheck approximation
-    public double hourlyWage; //needs input
-    public double taxPercentage; //need to scrape
-    public double taxDeduction;
-    public double paycheckGross;
-    public double paycheckNet;
-    public double hoursWorked; //needs input
-
-    public void paycheckApprox() {
-        paycheckGross = hourlyWage * hoursWorked;
-        taxDeduction = paycheckGross * taxPercentage;
-        paycheckNet = paycheckGross - taxDeduction;
-        System.out.println("Gross paycheck (before taxes): $" + paycheckGross);
-        System.out.println("Net paycheck (after taxes): $" + paycheckNet);
-        System.out.println("The current income tax percentage is " + taxPercentage);
-    }
-
-    //coffee
-    public LocalTime currentTime;
-    
-    public static void main(String[] args) {
-      LocalTime currentTime = LocalTime.now();
-    }
-    
-    public LocalTime changeTime;
-    
-    public void coffeeChangeTime() {
-      changeTime = currentTime.plusHours(3);
-    }
-    
-    public void coffeeGuide() {
-      System.out.println("1. Place large coffee filter in empty coffee drip");
-      System.out.println("2. Place the coffee drip in the grinder, select the desired amount of coffee, and press Grind");
-      System.out.println("3. Once the grinder is finished, place the drip into the brewer");
-      System.out.println("4. Place the empty coffee holder under the drip and begin brewing");
-      System.out.println("5. Once finished, place in front of store\n");
-      System.out.println("The current time is " + currentTime + ". Remember that coffee must be changed every 3 hours, so it will need to be changed at " + changeTime);
-    }
 }

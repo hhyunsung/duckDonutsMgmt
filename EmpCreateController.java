@@ -21,20 +21,22 @@ public class EmpCreateController {
     @FXML private TextField email;
 
     Employee created;
-    @FXML protected void submitEmp(ActionEvent event)
+    /**
+     * Takes input of user into text fields and constructs employee object from them
+     * 
+     */@FXML protected void submitEmp(ActionEvent event)
     {
-         created = new Employee(name.getText(), phone.getText(), Integer.parseInt(pin.getText()), Integer.parseInt(age.getText()), email.getText());
-        
+        created = new Employee(name.getText(), phone.getText(), Integer.parseInt(pin.getText()), Integer.parseInt(age.getText()), email.getText());
         
         closeCreate(event);
     }
     
-    public Employee getCreatedEmp()
-    {
-        return created;
-    }
     
-    @FXML protected void closeCreate(ActionEvent event)
+    
+    /**
+     * closes window
+     * 
+     */@FXML protected void closeCreate(ActionEvent event)
     {
         ((Stage)((Node)event.getSource()).getScene().getWindow()).close();
     }
