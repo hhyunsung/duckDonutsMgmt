@@ -19,14 +19,17 @@ public class TaskController {
     @FXML protected TextField priority;
     
     Task created;
-    @FXML protected void submitTask(ActionEvent event)
+    /**
+     * takes user inputt of task description and assigns task to employee ordered by integer value priority
+     * 
+     */@FXML protected void submitTask(ActionEvent event)
     {
         created = new Task(description.getText(), Integer.parseInt(priority.getText()));
-        for(int i = 0;i<Employee.emps.size();i++)
+        for(int i = 0;i<Employee.getEmployees().size();i++)
         {
-            if(name.getText().equals(Employee.emps.get(i).getName()))
+            if(name.getText().equals(Employee.getEmployees().get(i).getName()))
             {
-                Employee.emps.get(i).addTask(created);
+                Employee.getEmployees().get(i).addTask(created);
             }
         }
          

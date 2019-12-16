@@ -9,11 +9,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.*;
 public class SplashController {
-    @FXML private Text actiontarget;
-    @FXML protected void handleSubmitButtonAction(ActionEvent event) {
-        actiontarget.setText("Sign in button pressed");
-    }
-
     @FXML protected void enter(ActionEvent event) throws IOException
     {
         Parent sign = FXMLLoader.load(getClass().getResource("sign.fxml"));
